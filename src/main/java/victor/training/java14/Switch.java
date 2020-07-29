@@ -7,7 +7,7 @@ public class Switch {
    private static final Logger log = LoggerFactory.getLogger(Switch.class);
    public static void main(String[] args) {
       processMessage("CreateOrder");
-      
+
       System.out.println("VAT BG = " + getVAT("BG"));
       System.out.println("VAT BD = " + getVAT("MD"));
    }
