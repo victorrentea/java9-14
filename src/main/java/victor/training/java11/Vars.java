@@ -2,11 +2,8 @@ package victor.training.java11;
 
 
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public class Vars {
@@ -16,6 +13,8 @@ public class Vars {
    // WTH!: var List.of, var <>, anonym subtype
    // avoid: long pipeline, less readable,
    // uses: long classname, generics, try-w-res,
+
+   // var for lambda args, for annotations; all or none
 
    public static void main(String[] args) {
       Predicate<Apple> pred = (var apple) -> apple.isHeavy();

@@ -8,16 +8,25 @@ public class Switch {
    public static void main(String[] args) {
       processMessage("CreateOrder");
 
-      System.out.println("VAT BG = " + getVAT("BG"));
-      System.out.println("VAT BD = " + getVAT("MD"));
+      System.out.println("VAT BG = " + getVAT("BG", true));
+      System.out.println("VAT BD = " + getVAT("MD", false));
    }
 
-   private static int getVAT(String isoCode) {
+   private static int getVAT(String isoCode, boolean tobacco) {
       switch (isoCode) {
-         case "BG": return 0;
-         case "US","MX": return 15;
-         case "MD": return 5;
-         default: throw new IllegalArgumentException();
+         case "BG":
+            return 0;
+         case "US":
+         case "MX":
+            return 15;
+         case "MD":
+            if (tobacco) {
+               return 7;
+            } else {
+               return 5;
+            }
+         default:
+            throw new IllegalArgumentException();
       }
    }
 
