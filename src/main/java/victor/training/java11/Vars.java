@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 public class Vars {
 
+   // use: local variab=, for index/variable
    // KO: lambdas, params, fields, var n;, = null, int[]
    // OK: "var var", var(), var.x.d
    // WTH!: var List.of, var <>, anonym subtype
