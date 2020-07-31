@@ -1,22 +1,22 @@
 package victor.training.java11;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
-public class Vars {
+public class Vars { // local-variable type inferance
+//   private var x = 1; // KO
 
-   // use: local variab=, for index/variable
+//    use: local variab=, for index/variable
    // KO: lambdas, params, fields, var n;, = null, int[]
    // OK: "var var", var(), var.x.d
    // WTH!: var List.of, var <>, anonym subtype
@@ -54,6 +54,28 @@ public class Vars {
           .filter(isActive.or(Person::isNotBanned))
           .collect(toList());
 
+      noVarsInitToNull();
+   }
 
+   private static void noVarsInitToNull() {
+      boolean b = true;
+//      var userToNotify = null; // NO
+      Optional<Person> userToNotify = getPersonToNotify(b);
+
+      if (userToNotify.isPresent()) {
+         System.out.println("send email to " + userToNotify);
+      }
+   }
+
+   private static Optional<Person> getPersonToNotify(boolean b) {
+      if (b) {
+         return of(otherFunc()); // fail fast if otherFunc returns null
+      } else {
+         return empty();
+      }
+   }
+
+   private static Person otherFunc() {
+      return new Person(1);
    }
 }
