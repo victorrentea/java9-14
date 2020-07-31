@@ -1,13 +1,27 @@
 package victor.training.java11;
 
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
 public class Optionals {
    public static void main(String[] args) {
+
+       // Stackholm syndrome
+      List<Optional<Integer>> opts = List.of(1,2,3,4,5).stream().map(Optional::of).collect(Collectors.toList());
+      opts.stream().collect(Collectors.partitioningBy(Optional::isPresent)).get(true);
+//      extractPresnt(opts).stream()
+//          .filter(Optional::isPresent)
+//          .map(Optional::get)
+//          .collect(Collectors.toList());
+
+
+
       long t0 = System.currentTimeMillis();
       Optional<String> opt =  empty();
 
