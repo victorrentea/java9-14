@@ -22,6 +22,9 @@ public class CompletableFutures implements Runnable {
                 log.debug("Wait a bit, block everyone..");
                 sleepQuiet(8000);
                 log.debug("Resume...");
+
+                //                com.sun.management.DiagnosticCommandMBean ;
+
                 return s;
              }).thenAccept(log::debug);
 
