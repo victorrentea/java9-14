@@ -1,10 +1,16 @@
 package victor.training.java11;
 
 
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
 
 public class Vars {
 
@@ -18,24 +24,25 @@ public class Vars {
    // var for lambda args, for annotations; all or none
 
    public static void main(String[] args) {
-      Predicate<Apple> pred = (var apple) -> apple.isHeavy();
-      var a = List.of(1, 2, 3, 4, "a", 1.0);
-      var map = Map.of(1, List.of("one"), 2, List.of("two"));
-      for (var entry : map.entrySet()) {
-         System.out.println(entry.getKey());
+      var i = 2;
+//      i = "a" not ok
+      var s = "Hello var";
+//      var i; // not ok
+
+      List<Person> people = Arrays.asList(new Person(), new Person());
+      Map<Long, Person> peopleById = people.stream().collect(toMap(Person::getId, identity()));
+
+      for (var longPersonEntry : peopleById.entrySet()) { // shorter more focused code. use var to get rid of lots of <generics>
+
       }
 
 
-   }
-}
-class X {
-   int x = 1;
-   public void m() {
 
-   }
-}
-class Apple {
-   boolean isHeavy() {
-      return true;
+
+
+
+
+
+
    }
 }
