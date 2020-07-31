@@ -3,7 +3,6 @@ package victor.training.java11;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.Callable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -106,8 +105,13 @@ public class Vars { // local-variable type inferance
       noVarsInitToNull();
 
 
-      BiFunction<Person, Person, Person> multiplyPerson = (@Deprecated var p1, var p2) -> new Person(p1.getId());
+      BiFunction<Person, Person, Person> multiplyPerson = (@Deprecated var p1, var p2) -> new Person(p1.getId() + p2.getId());
+      BiFunction<Person, Person, Person> multiplyPersonBetter = Vars::multiplyPerson;
 
+   }
+
+   private static Person multiplyPerson(@Deprecated Person p1, Person p2) {
+      return new Person(p1.getId() + p2.getId());
    }
 
    private static boolean deservesPromotion(Person p) {
