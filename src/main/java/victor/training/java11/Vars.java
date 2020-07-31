@@ -1,6 +1,7 @@
 package victor.training.java11;
 
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -13,6 +14,8 @@ import static java.util.stream.Collectors.toMap;
 
 public class Vars { // local-variable type inferance
 //   private var x = 1; // KO
+//   private String sName;
+//   private int iAge;
 
 //    use: local variab=, for index/variable
    // KO: lambdas, params, fields, var n;, = null, int[]
@@ -21,9 +24,14 @@ public class Vars { // local-variable type inferance
    // avoid: long pipeline, less readable,
    // uses: long classname, generics, try-w-res,
 
-   // var for lambda args, for annotations; all or none
+   // var for lambda args, for annotations; all or none java11
 
    public static void main(String[] args) {
+
+      // horrible inferred type because of heterogenous element type:
+      // tries to deterimine the most specific combtination of types.
+      var list = List.of("Maria","Christian","Dimitar", 1);
+
       var i = 2;
 //      i = "a" not ok
       var s = "Hello var";
@@ -33,6 +41,10 @@ public class Vars { // local-variable type inferance
       // suggestive variable names can make the type obvious.
       for (var longPersonEntry : peopleById.entrySet()) { // shorter more focused code. use var to get rid of lots of <generics>
       }
+
+
+      // RESUME HERE
+
 
       Function<Person, Long> idf = person -> person.getId(); // Target-typing
       Function<Person, Long> idfRef = Person::getId; // Target-typing
