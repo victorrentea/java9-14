@@ -13,26 +13,23 @@ public class CompletableFutures implements Runnable {
    private static final Logger log = LoggerFactory.getLogger(CompletableFutures.class);
 
    public static void main(String[] args) throws InterruptedException {
+//      new Thread(new CompletableFutures()).start();
+      CompletableFuture.supplyAsync(() -> getData())
+          .thenApplyAsync(s -> {
+             log.debug("Wait a bit, block everyone..");
+             sleepQuiet(8000);
+             log.debug("Resume...");
 
-      new Thread(new CompletableFutures()).start();
+             //                com.sun.management.DiagnosticCommandMBean ;
 
-      for (int i = 0; i < 10; i++) {
-         CompletableFuture.supplyAsync(() -> getData())
-             .thenApplyAsync(s -> {
-                log.debug("Wait a bit, block everyone..");
-                sleepQuiet(8000);
-                log.debug("Resume...");
+             return s;
+          }).thenAccept(log::debug);
 
-                //                com.sun.management.DiagnosticCommandMBean ;
-
-                return s;
-             }).thenAccept(log::debug);
-
-      }
-//      Thread.sleep(6000);
+      Thread.sleep(6000);
    }
 
    private static String getData() {
+      log.info("Getting data");
       return "Good Stuff";
    }
 

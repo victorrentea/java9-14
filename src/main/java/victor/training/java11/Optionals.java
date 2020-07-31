@@ -8,9 +8,9 @@ import static java.util.Optional.of;
 
 public class Optionals {
    public static void main(String[] args) {
-      Optional<String> opt = Math.random() < 0.5 ? of("a") : empty();
+      Optional<String> opt =  empty();
 
-      String s = opt.orElseGet(() -> expensiveBackup());
+      String s = opt.orElse(expensiveBackup());
 
       System.out.println("Result = " + s);
    }
