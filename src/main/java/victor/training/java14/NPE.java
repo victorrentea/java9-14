@@ -33,6 +33,9 @@ public class NPE {
    }
 }
 
-record A(B b) {}
+record A(B b) {
+
+}
 record B(C c) {}
 record C(String s) {}
+
