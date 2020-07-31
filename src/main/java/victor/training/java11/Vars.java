@@ -4,10 +4,6 @@ package victor.training.java11;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
@@ -29,12 +25,15 @@ public class Vars {
       var s = "Hello var";
 //      var i; // not ok
 
-      List<Person> people = Arrays.asList(new Person(), new Person());
+      List<Person> people = Arrays.asList(new Person(1), new Person(2));
       Map<Long, Person> peopleById = people.stream().collect(toMap(Person::getId, identity()));
 
+      // suggestive variable names can make the type obvious.
       for (var longPersonEntry : peopleById.entrySet()) { // shorter more focused code. use var to get rid of lots of <generics>
 
       }
+
+
 
 
 
