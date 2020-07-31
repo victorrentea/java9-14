@@ -1,6 +1,7 @@
 package victor.training.java11;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class PrivateDefault {
 
@@ -10,6 +11,13 @@ public class PrivateDefault {
       list.stream();
    }
 }
+
+
+//abstract class BaseList extends List {
+//   public Stream stream() {
+//      return ;
+//   }
+//}
 
 interface A {
    public static final int x = 1; // always constant
