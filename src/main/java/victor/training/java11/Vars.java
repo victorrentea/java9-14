@@ -59,7 +59,7 @@ public class Vars { // local-variable type inferance
 
       // UC353
       List<Person> result3 = people.stream()
-          .filter(Vars::deserversPromotion)
+          .filter(Vars::deservesPromotion)
           .collect(toList());
 
 
@@ -73,7 +73,7 @@ public class Vars { // local-variable type inferance
       noVarsInitToNull();
    }
 
-   private static boolean deserversPromotion(Person p) {
+   private static boolean deservesPromotion(Person p) {
       return p.isNotBanned() || p.isActive();
    }
 
