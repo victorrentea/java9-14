@@ -1,15 +1,8 @@
 package victor.training.java11;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.Files;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.toList;
 
 public class TryWithResources {
 
@@ -18,18 +11,23 @@ public class TryWithResources {
         "f1"1, 
          """;
 
-      checkFile(s.lines());
+      checkLines(s.lines());
 
 
       Stream<String> lines = Files.lines(new File("data.txt").toPath());
 //      lines = inputStream parsing (network)
 //      line = read CLOB from DB
-      checkFile(lines);
+      checkLines(lines);
+
+//      Writer writer = new FileWriter("data.txt");
+//      try (writer) {
+//         writer.write("AAA");
+//      }
    }
 
-   public static void checkFile(Stream<String> lines) {
-      try (Stream<String> newStream = lines) {
-         if (newStream.filter(s -> !s.isBlank()).count() <= 20) {
+   public static void checkLines(Stream<String> lines) {
+      try (lines) {
+         if (lines.filter(s -> !s.isBlank()).count() <= 20) {
             throw new IllegalArgumentException("Incorrect file!");
          }
       }
