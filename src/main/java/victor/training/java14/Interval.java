@@ -10,6 +10,10 @@ record Interval(int start, int end) {
       }
    }
 
+   public Interval(String startStr, String endStr ) {
+      this(Integer.parseInt(startStr), Integer.parseInt(endStr));
+   }
+
    public boolean intersects(Interval other) {
       return start <= other.end && other.start <= end;
    }
