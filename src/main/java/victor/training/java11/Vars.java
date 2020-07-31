@@ -4,8 +4,6 @@ package victor.training.java11;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -54,7 +52,29 @@ public class Vars { // local-variable type inferance
           .filter(isActive.or(Person::isNotBanned))
           .collect(toList());
 
+      List<Person> result2 = people.stream()
+          .filter(p -> p.isNotBanned() || p.isActive())
+          .collect(toList());
+
+
+      // UC353
+      List<Person> result3 = people.stream()
+          .filter(Vars::deserversPromotion)
+          .collect(toList());
+
+
+      List<Person> result4 = new ArrayList<>();
+      for (Person person : people) {
+         if (person.isActive() || person.isNotBanned()) {
+            result4.add(person);
+         }
+      }
+
       noVarsInitToNull();
+   }
+
+   private static boolean deserversPromotion(Person p) {
+      return p.isNotBanned() || p.isActive();
    }
 
    private static void noVarsInitToNull() {

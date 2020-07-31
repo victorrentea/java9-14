@@ -13,4 +13,5 @@ public class Person {
    }
    public boolean isActive() {return true;}
    public boolean isNotBanned() {return true;}
+
 }
