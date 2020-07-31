@@ -8,39 +8,27 @@ public class Switch {
    public static void main(String[] args) {
       processMessage("CreateOrder");
 
-      System.out.println("VAT BG = " + getVAT("BG", true));
-      System.out.println("VAT BD = " + getVAT("MD", false));
+      System.out.println("VAT BG = " + getVAT(CountyIso.valueOf("BG"), true));
+      System.out.println("VAT BD = " + getVAT(CountyIso.valueOf("MD"), false));
    }
 
-   private static int getVAT(String isoCode, boolean tobacco) {
-      switch (isoCode) {
-         case "BG":
-            return 0;
-         case "US":
-         case "MX":
-            return 15;
-         case "MD":
-            if (tobacco) {
-               return 7;
-            } else {
-               return 5;
-            }
-         default:
-            throw new IllegalArgumentException();
-      }
+   private static int getVAT(CountyIso isoCode, boolean tobacco) {
+       return switch (isoCode) {
+         case BG -> 0;
+         case US, MX -> 15;
+         case MD -> 5;
+//         default -> throw new IllegalArgumentException("JDD: hope to catch a missing enum");
+      };
+   }
+   enum CountyIso {
+      BG,US,MX,MD
+//      , NEW_VAL
    }
 
    public static void processMessage(String messageCode) {
       switch (messageCode) {
-         case "CreateOrder":
-            log.info("Order Created");
-            break;
-
-         case "ViewOrder":
-         case "ExportOrder":
-         case "PrintOrder":
-            log.info("Order Accessed");
-            break;
+         case "CreateOrder" -> log.info("Order Created");
+         case "ViewOrder", "ExportOrder", "PrintOrder" -> log.info("Order Accessed");
       }
    }
 }

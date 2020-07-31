@@ -6,7 +6,12 @@ public class Strings {
                     "Take a sad song and make it better\n" +
                     "Remember to let her into your heart\n" +
                     "Then you can start to make it better";
-
+      jude = """
+          Hey Jude, don't make it bad
+          Take a sad song and make it better
+          Remember to let her into your heart
+          Then you can start to make it better""";
+      System.out.println(jude.indent(3));
       // .isBlank 11
       // .indent
       // .lines 11
