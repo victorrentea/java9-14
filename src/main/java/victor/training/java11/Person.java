@@ -11,4 +11,6 @@ public class Person {
    public long getId() {
       return id;
    }
+   public boolean isActive() {return true;}
+   public boolean isNotBanned() {return true;}
 }
