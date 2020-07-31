@@ -14,6 +14,7 @@ record Interval(int start, int end) {
       return start <= other.end && other.start <= end;
    }
 }
+//record Other extends Interval {}
 // is similar to:
 
 //public class Interval {
