@@ -1,8 +1,10 @@
 package victor.training.java11;
 
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -26,11 +28,30 @@ public class Vars { // local-variable type inferance
 
    // var for lambda args, for annotations; all or none java11
 
-   public static void main(String[] args) {
+   public static void main(String[] args) throws IOException {
 
       // horrible inferred type because of heterogenous element type:
       // tries to deterimine the most specific combtination of types.
-      var list = List.of("Maria","Christian","Dimitar", 1);
+      var names = List.of("Maria","Christian","Dimitar", 1);
+
+      var c = new Person(1) {
+         @Override
+         public long getId() {
+            return 13; // suprize! 1st of April
+         }
+      };
+
+
+      var baos = new ByteArrayOutputStream();
+      try (var writer = new FileWriter(new File("out.txt"))) {
+         writer.write("data");
+      }
+
+      var x = List.of("Maria","Christian","Dimitar").stream()
+         .map(Person::new)
+          .map(Person::getId)
+          .collect(toList());
+
 
       var i = 2;
 //      i = "a" not ok
@@ -83,6 +104,10 @@ public class Vars { // local-variable type inferance
       }
 
       noVarsInitToNull();
+
+
+      BiFunction<Person, Person, Person> multiplyPerson = (@Deprecated var p1, var p2) -> new Person(p1.getId());
+
    }
 
    private static boolean deservesPromotion(Person p) {
