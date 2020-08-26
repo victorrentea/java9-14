@@ -16,6 +16,9 @@ public class Strings {
 
       // text blocks
       // stripIndent
+      // .formatted
+      // \
+      // <trailingspace>\s
 
    }
 }
