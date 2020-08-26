@@ -27,7 +27,7 @@ public class NPE {
    }
 
    private static void output(A a) {
-      System.out.println(a.b().c().s().toString());
+      System.out.println(a.b().c().s().toUpperCase());
    }
 }
 
