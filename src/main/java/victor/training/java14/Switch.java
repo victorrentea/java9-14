@@ -6,38 +6,34 @@ import org.slf4j.LoggerFactory;
 public class Switch {
    private static final Logger log = LoggerFactory.getLogger(Switch.class);
    public static void main(String[] args) {
-      processMessage("CreateOrder");
+      System.out.println("VAT BG = " + getVAT("BG", 10, true));
+      System.out.println("VAT BD = " + getVAT("MD", 20, false));
 
-      System.out.println("VAT BG = " + getVAT("BG", true));
-      System.out.println("VAT BD = " + getVAT("MD", false));
+      auditMessage("CreateOrder");
    }
 
-   private static int getVAT(String isoCode, boolean tobacco) {
+   private static double getVAT(String isoCode, double value, boolean tobacco) {
+      /* TODO for MD return 5 + ... if tobacco==true */
       switch (isoCode) {
          case "BG":
             return 0;
          case "US":
          case "MX":
-            return 15;
+            return 15 + .05 * value;
          case "MD":
-            if (tobacco) {
-               return 7;
-            } else {
-               return 5;
-            }
+            return 7 + .02 * value;
          default:
             throw new IllegalArgumentException();
       }
    }
 
-   public static void processMessage(String messageCode) {
+   public static void auditMessage(String messageCode) {
       switch (messageCode) {
          case "CreateOrder":
             log.info("Order Created");
             break;
 
          case "ViewOrder":
-         case "ExportOrder":
          case "PrintOrder":
             log.info("Order Accessed");
             break;
