@@ -16,6 +16,8 @@ public class TryWithResources {
    public static void main(String[] args) throws IOException {
       checkFile(TryWithResources::openFile); // fragile: if you NEED to be sure that resource is closed, then
       checkFile2(TryWithResources::openFile);
+
+      // lines.reduce()// allow you to do many things at once in one single pass throught the stream
    }
 
    public static Stream<String> openFile() {
@@ -35,11 +37,21 @@ public class TryWithResources {
          }
       }
    }
+
    public static void checkFile2(Supplier<Stream<String>> linesSupplier) {
       try (Stream<String> lines = linesSupplier.get()) {
          if (lines.filter(s -> !s.isBlank()).count() > 2) {
             throw new IllegalArgumentException("Incorrect file!");
          }
       }
+   }
+
+   public static void checkFile3(Supplier<Stream<String>> linesSupplier) {
+
+      Stream<String> lines = linesSupplier.get(); // risk 1: you forget to close it()
+      if (lines.filter(s -> !s.isBlank()).count() > 2) {
+         throw new IllegalArgumentException("Incorrect file!");
+      }
+
    }
 }
