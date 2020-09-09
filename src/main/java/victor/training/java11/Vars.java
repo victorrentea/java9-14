@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 import java.util.function.Predicate;
 
 import static java.util.Arrays.asList;
+import static java.util.Map.entry;
+import static java.util.Map.ofEntries;
 
 public class Vars {
 
@@ -28,17 +30,22 @@ public class Vars {
 //      }
 //   };
 
-   public static final  Map<Integer,List<String>> map = Map.of(
-       1, Arrays.asList("one","unu"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two"),
-       2, List.of("two")
+   public static final  Map<Integer,List<String>> map = ofEntries(
+       entry(1, List.of("one","unu")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two")),
+       entry(2, List.of("two"))
 //       ,2, List.of("two")// 11th illegal
    );
 
