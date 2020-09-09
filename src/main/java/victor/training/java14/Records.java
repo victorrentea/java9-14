@@ -22,13 +22,17 @@ public class Records {
    }
 }
  // [1,3]   <   [2,7]
-record Interval(int start, int end) implements Comparable<Interval> {
+/*final */record Interval(/*final */int start, int end) implements Comparable<Interval> {
    public boolean intersects(Interval other) {
       return start <= other.end && other.start <= end;
    }
    public int endExclusive() {
       return end + 1;
    }
+
+    public void setStart(int newStart) {
+      this.start = newStart;
+    }
 
     @Override
     public int compareTo(Interval o) {
@@ -39,10 +43,10 @@ record Interval(int start, int end) implements Comparable<Interval> {
 // X add more methods
 // X more than 1 param
 // YES change the generated methods ?
+// YES comparable (implementing stuff)
 
 
 // extends // abstract records
-// comparable (implementing stuff)
 // setters ?
 // inner classes
 // anonymous records
