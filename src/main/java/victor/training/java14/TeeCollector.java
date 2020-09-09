@@ -12,6 +12,7 @@ public class TeeCollector {
       // Java 12
       List<Integer> collect = IntStream.range(1, 10).boxed().collect(Collectors.toList());
       Long avg = collect.stream().collect(Collectors.teeing(summingInt(i -> i), counting(), (s, c) -> s / c));
+//      Long avg = collect.stream().mapToInt(i -> i).average();
       System.out.println(avg);
    }
 }
