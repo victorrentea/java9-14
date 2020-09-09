@@ -1,5 +1,6 @@
 package victor.training.java14;
 
+import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -30,8 +31,8 @@ public class Records {
       return end + 1;
    }
 
-    public void setStart(int newStart) {
-      this.start = newStart;
+    public Interval withStart(int newStart) {
+      return new Interval(newStart, end);
     }
 
     @Override
@@ -51,6 +52,7 @@ public class Records {
 // inner classes
 // anonymous records
 // constructorS  - overloaded constructors + logic in the constructor (eg validation)
+// adding more fields
 // framework integration (mybatis, jackson)
 
 
