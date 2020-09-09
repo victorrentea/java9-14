@@ -80,13 +80,13 @@ record Interval<T extends Comparable<T>>(T start, T end) implements Comparable<I
 // anonymous records NO
 // framework integration (mybatis, jackson HARD manually, Hibernate NO, JAXB NO)
 // constructorS  - OK overloaded constructors
-
-
-
 // OK constructor - logic in the constructor (eg validation)
 
 
-// Vreti o discutie despre imutabilitate?
+// A) Immutable best practices  (Java8-)
+// B) A glimpse of Java 15 (sealed classes)
+// C) Some functional design patterns (java 8-)
+// D) Retro (what the heck was al that)
 
 interface Shape {
    int CONSTANT_SHIT = 2;
