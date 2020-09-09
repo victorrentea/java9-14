@@ -1,6 +1,5 @@
 package victor.training.java14;
 
-import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -16,6 +15,9 @@ public class Records {
       objects.add(new Interval(2, 7));
       objects.add(new Interval(1, 3));
       System.out.println(objects);
+
+      Circle circle = new Circle(2);
+      System.out.println(circle.radius());
    }
 
    public static boolean intervalsIntersect(Interval interval1, Interval interval2) {
@@ -51,7 +53,14 @@ public class Records {
 // NO abstract records
    // abstract final class RecordBase {} // contradiction
 
-// extends
+// NO extends
+   //class Shape {
+   //   public int mutableShit;
+   //}
+   //record Circle(double radius) extends Shape {}
+
+
+
 // inner classes
 // anonymous records
 // constructorS  - overloaded constructors + logic in the constructor (eg validation)
@@ -60,3 +69,12 @@ public class Records {
 
 
 // Vreti o discutie despre imutabilitate?
+
+interface Shape {
+   int CONSTANT_SHIT = 2;
+   default double radius() {
+      return 1;
+   }
+}
+record Circle(double radius) implements Shape {}
+
