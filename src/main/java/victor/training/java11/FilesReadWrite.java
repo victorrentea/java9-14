@@ -8,6 +8,8 @@ import java.nio.file.StandardOpenOption;
 public class FilesReadWrite {
    public static void main(String[] args) throws IOException {
 
+//      apache commons-io
+//      IOUtils.writeString("ss", writer);
       Files.writeString(Paths.get("test.txt"), "What\nduh");
    }
 }
