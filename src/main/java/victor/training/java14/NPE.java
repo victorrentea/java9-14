@@ -40,28 +40,10 @@ record A(B b) {
 //}
 
 
-class B {
-   private final C c;
-
-   B(C c) {
-      this.c = c;
-   }
-
-   public C c() {
-      return c;
-   }
+record B(C c) {
 }
 
-class C {
-   private final String name;
-
-   C(String name) {
-      this.name = name;
-   }
-
-   public String getName() {
-      return name;
-   }
+record C(String name) {
 }
 
 // -XX:+ShowCodeDetailsInExceptionMessages - enable this in PROD but take care not to slip exceptions
@@ -82,7 +64,7 @@ public class NPE {
 
 
    private static void output(A a) {
-      System.out.println(a.b().c().getName().toUpperCase());
+      System.out.println(a.b().c().name().toUpperCase());
    }
 
    private static String nastyBizFunction(int x) {
