@@ -27,3 +27,6 @@ public class Records {
 // inner classes
 // anonymous records
 // constructorS  - overloaded constructors + logic in the constructor (eg validation)
+
+
+// Vreti o discutie despre imutabilitate?
