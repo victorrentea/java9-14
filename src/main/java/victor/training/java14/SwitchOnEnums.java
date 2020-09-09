@@ -1,5 +1,7 @@
 package victor.training.java14;
 
+
+
 public class SwitchOnEnums {
 
    public double m(FiscalZone zone, double baseAmount) {

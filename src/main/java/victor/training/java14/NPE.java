@@ -1,17 +1,45 @@
 package victor.training.java14;
 
 
-class A {
- private final B b;
+import java.util.Objects;
 
-   A(B b) {
-      this.b = b;
-   }
 
-   public B getB() {
-      return b;
-   }
+record A(B b) {
+
 }
+//class A {
+//   private final B b;
+//
+//   public A(B b) {
+//      this.b = b;
+//   }
+//
+//   public B b() {
+//      return b;
+//   }
+//
+//   @Override
+//   public String toString() {
+//      return "A{" +
+//             "b=" + b +
+//             '}';
+//   }
+//
+//   @Override
+//   public boolean equals(Object o) {
+//      if (this == o) return true;
+//      if (o == null || getClass() != o.getClass()) return false;
+//      A a = (A) o;
+//      return Objects.equals(b, a.b);
+//   }
+//
+//   @Override
+//   public int hashCode() {
+//      return Objects.hash(b);
+//   }
+//}
+
+
 class B {
    private final C c;
 
@@ -19,10 +47,11 @@ class B {
       this.c = c;
    }
 
-   public C getC() {
+   public C c() {
       return c;
    }
 }
+
 class C {
    private final String name;
 
@@ -37,13 +66,13 @@ class C {
 
 // -XX:+ShowCodeDetailsInExceptionMessages - enable this in PROD but take care not to slip exceptions
 // to the user
- //@RestControllerAdvice or try { stuff} catch(Exception ex) {ex.log...}
+//@RestControllerAdvice or try { stuff} catch(Exception ex) {ex.log...}
 
 public class NPE {
    public static void main(String[] args) {
-         output(new A(new B(new C("Halo"))));
+      output(new A(new B(new C("Halo"))));
 //         output(new A(new B(new C(null))));
-         output(new A(new B(null)));
+      output(new A(new B(null)));
 //         output(new A(null));
 
       //but it still doesn't solve 'returning death nulls'
@@ -53,7 +82,7 @@ public class NPE {
 
 
    private static void output(A a) {
-      System.out.println(a.getB().getC().getName().toUpperCase());
+      System.out.println(a.b().c().getName().toUpperCase());
    }
 
    private static String nastyBizFunction(int x) {
