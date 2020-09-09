@@ -83,7 +83,7 @@ record Interval<T extends Comparable<T>>(T start, T end) implements Comparable<I
 
 
 
-// constructor - logic in the constructor (eg validation)
+// OK constructor - logic in the constructor (eg validation)
 
 
 // Vreti o discutie despre imutabilitate?
@@ -99,6 +99,9 @@ record Circle(double radius) implements Shape {
       if (radius < 0) {
          throw new IllegalArgumentException();
       }
+   }
+   public static Circle smallCircle() {
+      return new Circle(5);
    }
 
    public Circle(String radiusStr) { // overloaded constructor needs to call another constructor.
