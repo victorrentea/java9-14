@@ -79,9 +79,11 @@ record Interval<T extends Comparable<T>>(T start, T end) implements Comparable<I
 // NO adding extra fields vs the constructor
 // anonymous records NO
 // framework integration (mybatis, jackson HARD manually, Hibernate NO, JAXB NO)
+// constructorS  - OK overloaded constructors
 
 
-// constructorS  - overloaded constructors + logic in the constructor (eg validation)
+
+// constructor - logic in the constructor (eg validation)
 
 
 // Vreti o discutie despre imutabilitate?
@@ -93,6 +95,12 @@ interface Shape {
    }
 }
 record Circle(double radius) implements Shape {
+   public Circle {
+      if (radius < 0) {
+         throw new IllegalArgumentException();
+      }
+   }
+
    public Circle(String radiusStr) { // overloaded constructor needs to call another constructor.
       this(Double.parseDouble(radiusStr));
    }
@@ -100,10 +108,15 @@ record Circle(double radius) implements Shape {
       this(radiusStr+second);
    }
 }
+
+
 class CircleClass {
    private final double radius;
 
    CircleClass(double radius) {
+      if (radius < 0) {
+         throw new IllegalArgumentException();
+      }
       this.radius = radius;
    }
    CircleClass(String radius) {
