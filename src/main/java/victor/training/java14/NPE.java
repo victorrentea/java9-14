@@ -68,7 +68,16 @@ public class NPE {
 
    private static void output(A a) {
       System.out.println(a.b().c().name().toUpperCase());
+
+      if (a !=null &&
+//            a.b() != null &&
+            a.b().c() != null) {
+         System.out.println(a.b().c().name().toUpperCase());
+      }
+      //
+//      System.out.println(a.getB().flatMap(b -> b.getC()).flatMap(c -> c.getName()).map(String::toUpperCase()).orElse());
    }
+
 
    private static String nastyBizFunction(int x) {
       if (x % 3 == 1) {
