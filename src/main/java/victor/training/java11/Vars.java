@@ -2,10 +2,11 @@ package victor.training.java11;
 
 
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
+
+import static java.util.Arrays.asList;
 
 public class Vars {
 
@@ -18,8 +19,37 @@ public class Vars {
 
    // var for lambda args, for annotations; all or none
 
+
+//   public static final  Map<Integer,List<String>> oldMap = new HashMap<>()
+//   {//anonymous HashMap subclass
+//      { // instance initializer block
+//      put(1, asList("one"));
+//      put(2, asList("two"));
+//      }
+//   };
+
+   public static final  Map<Integer,List<String>> map = Map.of(
+       1, Arrays.asList("one","unu"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two"),
+       2, List.of("two")
+//       ,2, List.of("two")// 11th illegal
+   );
+
+//   public static final Set<String> keys = new HashSet<>(asList("a","b","c"));
+   public static final Set<String> keys = Set.of("a","b","c");
+
    public static void main(String[] args) {
-      var map = Map.of(1, List.of("one"), 2, List.of("two"));
+
+//      map.put(3, asList("trei")); // throws: Map.of creates unmodifiable maps
+
+
       for (Entry<Integer, List<String>> entry : map.entrySet()) {
          System.out.println(entry.getKey());
       }
