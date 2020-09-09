@@ -33,20 +33,27 @@ public class Switch {
 //      }
       return switch (countryIsoCode) {
          case "BG" -> 0;
-         case "US", "MX" -> 15 + .05 * value;
+         case "US", "MX" -> {
+            if (tobacco) {
+               yield 10 + 15 + .05 * value;
+            } else {
+               yield 15 + .05 * value;
+            }
+         }
          case "MD" -> 7 + .02 * value;
-         default -> throw new IllegalStateException("Unexpected value: " + countryIsoCode);
-      };
+         default ->
+            throw new IllegalStateException("Unexpected value: " + countryIsoCode);
+      }
    }
 
 
 
 
    public static void auditMessage(String messageCode) {
-      switch (messageCode) {
-         case "CreateOrder" -> auditCreateOrder();
-         case "ViewOrder", "PrintOrder" -> log.info("Order Accessed");
-      }
+//      switch (messageCode) {
+////         case "CreateOrder" -> auditCreateOrder();
+////         case "ViewOrder", "PrintOrder" -> log.info("Order Accessed");
+////      }
    }
 
    public static void auditCreateOrder() {
