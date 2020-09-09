@@ -20,6 +20,17 @@ public class Switch {
    private static double getVAT(String countryIsoCode, double value, boolean tobacco) throws IOException {
       /* TODO for MD return 5 + ... if tobacco==true */
 
+//      switch (countryIsoCode) {
+//         case "BG":
+//            return 0;
+//         case "US":
+//         case "MX":
+//            return 15 + .05 * value;
+//         case "MD":
+//            return 7 + .02 * value;
+//         default:
+//            throw new IllegalStateException("Unexpected value: " + countryIsoCode);
+//      }
       return switch (countryIsoCode) {
          case "BG" -> 0;
          case "US", "MX" -> 15 + .05 * value;
@@ -31,21 +42,16 @@ public class Switch {
 
 
 
-
-
-
-
    public static void auditMessage(String messageCode) {
       switch (messageCode) {
-         case "CreateOrder":
-            log.info("Order Created");
-            break;
-
-         case "ViewOrder":
-         case "PrintOrder":
-            log.info("Order Accessed");
-            break;
+         case "CreateOrder" -> auditCreateOrder();
+         case "ViewOrder", "PrintOrder" -> log.info("Order Accessed");
       }
+   }
+
+   public static void auditCreateOrder() {
+      log.info("Order Created");
+      log.info("Order Created END");
    }
 }
 
