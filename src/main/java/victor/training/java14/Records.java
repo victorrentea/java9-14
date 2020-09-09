@@ -26,8 +26,17 @@ public class Records {
       Constructor<?> constructor = Circle.class.getConstructors()[0];
       for (Parameter parameter : constructor.getParameters()) {
          System.out.println(parameter.getName());
-
       }
+      record MyTask(int i) implements Runnable {
+         @Override
+         public void run() {
+
+         }
+      };
+//      new record Runnable() {
+//
+//      }
+
    }
 
    public static boolean intervalsIntersect(Interval interval1, Interval interval2) {
@@ -43,6 +52,7 @@ record Interval<T extends Comparable<T>>(T start, T end) implements Comparable<I
    }
 
    public Interval<T> withStart(T newStart) {
+
       return new Interval<T>(newStart, end);
    }
 
