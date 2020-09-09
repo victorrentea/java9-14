@@ -9,18 +9,24 @@ public class Records {
       // override generated methods
    }
 
-   public static boolean intervalsIntersect(int start1, int end1, int start2, int end2) {
-      return start1 <= end2 && start2 <= end1;
+   public static boolean intervalsIntersect(Interval interval1, Interval interval2) {
+//      return interval1.start() <= interval2.end() &&
+//             interval2.start() <= interval1.end();
+      return interval1.intersects(interval2);
    }
 }
 
+record Interval(int start, int end) {
+   public boolean intersects(Interval other) {
+      return start <= other.end && other.start <= end;
+   }
+}
+// X add more methods
 
-// + SHADOW exceptions!!!
 
 // extends // abstract records
 // comparable (implementing stuff)
 // framework integration (mybatis, jackson)
-// add more methods
 // change the generated methods ?
 // setters ?
 // more than 1 param
