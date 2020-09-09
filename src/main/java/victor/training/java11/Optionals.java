@@ -10,10 +10,17 @@ public class Optionals {
    public static void main(String[] args) {
       Optional<String> opt = Math.random() < 0.5 ? of("a") : empty();
 
-      String s = opt.orElseGet(() -> expensiveBackup());
+      String s = opt.orElseGet(() -> expensiveBackup()); // better
+//      String s = opt.orElse(expensiveBackup()); //take 1 second no matter what
 
       System.out.println("Result = " + s);
    }
+
+//   public static void downloadBloodExamResults(Supplier<authorization> authorizer) {
+//      if () {
+//         authorizer.
+//      }
+//   }
 
    public static String expensiveBackup() { // TODO what if this returns Optional<>
       System.out.println("Perform expensive operation to get a default");
