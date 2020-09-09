@@ -12,16 +12,18 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.toList;
 
 public class TryWithResources {
-   public static void checkFile(Stream<String> lines) {
-      try (lines) {
-         if (lines.filter(s -> !s.isBlank()).count() <= 20) {
-            throw new IllegalArgumentException("Incorrect file!");
-         }
+   public static void main(String[] args) throws IOException {
+      try (Stream<String> lines = Files.lines(new File("data.txt").toPath())) {
+         checkFile(lines); // fragile: if you NEED to be sure that resource is closed, then
       }
    }
 
-   public static void main(String[] args) throws IOException {
-      Stream<String> lines = Files.lines(new File("data.txt").toPath());
-      checkFile(lines); // fragile: if you NEED to be sure that resource is closed, then
+
+   /// this function is in a far-away class
+
+   public static void checkFile(Stream<String> lines) {
+      if (lines.filter(s -> !s.isBlank()).count() <= 20) {
+         throw new IllegalArgumentException("Incorrect file!");
+      }
    }
 }
