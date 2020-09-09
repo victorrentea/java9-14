@@ -10,9 +10,15 @@ public class Strings {
 
       System.out.println(jude);
 
-      String sqlQuery = """
-          SELECT stuff
-          FROM stuff 
+//      String padding = "";
+//      for (int i = 0; i < 3; i++) {
+//         padding += " ";
+//      }
+      String padding = " x".repeat(3);
+      System.out.println(padding + "code");
+
+      String sqlQuery = """       
+          SELECT stu   FROM stuff 
           LEFT JOIN child on child.parent_id----
           WHERE""";
 
