@@ -107,6 +107,9 @@ public class Vars {
          lines.forEach(System.out::println);
       }
 
+//      List<Object> weirdListType = List.of(1,"2",3.0);
+      var weirdListType = List.of(1,"2",3.0);
+
    }
 
 //   var vv = 1; // fields don't work with var
