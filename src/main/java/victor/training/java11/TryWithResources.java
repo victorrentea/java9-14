@@ -10,8 +10,10 @@ import static java.util.stream.Collectors.toList;
 
 public class TryWithResources {
    public void checkFile(Stream<String> lines) {
-      if (lines.filter(s -> !s.isBlank()).count() <= 20) {
-         throw new IllegalArgumentException("Incorrect file!");
+      try (Stream<String> lines2 = lines) {
+         if (lines2.filter(s -> !s.isBlank()).count() <= 20) {
+            throw new IllegalArgumentException("Incorrect file!");
+         }
       }
    }
 }
