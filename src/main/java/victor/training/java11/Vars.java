@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 
 import static java.util.Arrays.asList;
 import static java.util.Map.entry;
-import static java.util.Map.ofEntries;
 
 public class Vars {
 
@@ -30,7 +29,7 @@ public class Vars {
 //      }
 //   };
 
-   public static final  Map<Integer,List<String>> map = ofEntries(
+   public static final  Map<Integer,List<String>> map = Map.ofEntries(
        entry(1, List.of("one","unu")),
        entry(2, List.of("two")),
        entry(2, List.of("two")),
@@ -57,8 +56,17 @@ public class Vars {
 //      map.put(3, asList("trei")); // throws: Map.of creates unmodifiable maps
 
 
-      for (Entry<Integer, List<String>> entry : map.entrySet()) {
+      for (var entry : map.entrySet()) {
          System.out.println(entry.getKey());
       }
+
+      // let's image Java was JavaScript
+      var i = 13; // Java COMPILER will figure out it has to be a integer there
+      // (by looking at what you put in tha variable)
+
+//      i = "1"; // NO!! Java is still statically type (Thank GOD!)
+
+      // var j; // javac can't what't the variable type
+      System.out.println("i is " + i);
    }
 }
