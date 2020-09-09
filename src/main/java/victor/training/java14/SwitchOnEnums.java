@@ -15,6 +15,6 @@ enum FiscalZone {
    EU,
    CH,
    UK,
-   WORLD,
-   US
+   WORLD/*,
+   US*/
 }
