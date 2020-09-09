@@ -65,11 +65,17 @@ public class Vars {
       Supplier<Boolean> lambda3 = discordsApple::isPoisonous;
       Boolean b = lambda3.get();
 
+
+      var var = 1; // WORKS because var is java 10+ is NOT a keyword!! Instead it's a reserved Type name
+      System.out.println(var);
    }
 //   var vv = 1; // fields don't work with var
 
 //   public static var m(var number) {} -- no var in method signatures
 }
+
+//class var { } // ILLEGAL from java 10+
+
 class Apple {
    public boolean isPoisonous() {
       return true;
