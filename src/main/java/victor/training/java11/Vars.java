@@ -39,5 +39,15 @@ public class Vars {
 
       // var j; // javac can't what't the variable type
       System.out.println("i is " + i);
+
+      /*val >= ===*/
+      final var arr = new int[]{0, 2, 3};
+//      arr = new int[0];
+
    }
+//   var vv = 1; // fields don't work with var
+
+//   public static var m(var number) {} -- no var in method signatures
+
+
 }
