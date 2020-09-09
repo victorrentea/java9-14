@@ -1,6 +1,5 @@
 package victor.training.java8;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +8,8 @@ import java.util.stream.Stream;
 
 // export all orders to a file
 
-interface OrderRepo extends JpaRepository<Order, Long> { // Spring Data FanClub
+class Order {}
+interface OrderRepo { // Spring Data FanClub
 	Stream<Order> findByActiveTrue(); // 1 Mln orders ;)
 }
 
