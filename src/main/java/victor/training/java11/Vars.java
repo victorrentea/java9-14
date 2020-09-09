@@ -27,6 +27,10 @@ public class Vars {
        1, List.of("one","unu"),
        2, List.of("two"));
 
+   private static Map<Long, List<Integer>> getOrderAssociations() {
+      return null;
+   }
+
    public static void main(String[] args) {
 
       for (var entry : map.entrySet()) {
@@ -68,7 +72,29 @@ public class Vars {
 
       var var = 1; // WORKS because var is java 10+ is NOT a keyword!! Instead it's a reserved Type name
       System.out.println(var);
+
+
+      // ========================== BEST PRACTICES ===================
+      // A) everywhere
+      // B) never
+      // C) here and there <==
+      //      My answer: C, tending to B
+
+      var map = getOrderAssociations(); // BAD because you would have to look
+      // at the called method signature to figure out the type of that var (eg when you inspect a pull request)
+
+      // Given you have clear names for methods and variables, ONLY then you might think of
+      // giving up the type information for brevity
+
+      Map<Long, List<Integer>> orderAssociations = getOrderAssociations();
+      for (var entry : orderAssociations.entrySet()) { // in this case, what the entry holds is obvious from the code.
+
+      }
+
+//      long count = userRepo.count();
+//      var count = userRepo.count(); // what did you really gain? 1 char? !
    }
+
 //   var vv = 1; // fields don't work with var
 
 //   public static var m(var number) {} -- no var in method signatures
