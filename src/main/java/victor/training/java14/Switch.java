@@ -57,10 +57,10 @@ public class Switch {
 
 
    public static void auditMessage(String messageCode) {
-//      switch (messageCode) {
-////         case "CreateOrder" -> auditCreateOrder();
-////         case "ViewOrder", "PrintOrder" -> log.info("Order Accessed");
-////      }
+      switch (messageCode) {
+         case "CreateOrder" -> auditCreateOrder();
+         case "ViewOrder", "PrintOrder" -> log.info("Order Accessed");
+      }
    }
 
    public static void auditCreateOrder() {
