@@ -12,6 +12,7 @@ public class Optionals {
 
       Optional<String> opt = Math.random() < 0.5 ? of("a") : empty();
 
+//      opt.isEmpty();
 
 //      String s = opt.orElseGet(() -> expensiveBackup()); // better -- calls it only if required
 //      or === flatMap + orElseGet
