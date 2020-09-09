@@ -2,11 +2,14 @@ package victor.training.java11;
 
 
 
+import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.Map.entry;
@@ -31,7 +34,7 @@ public class Vars {
       return null;
    }
 
-   public static void main(String[] args) {
+   public static void main(String[] args) throws IOException {
 
       for (var entry : map.entrySet()) {
          System.out.println(entry.getKey());
@@ -93,6 +96,17 @@ public class Vars {
 
 //      long count = userRepo.count();
 //      var count = userRepo.count(); // what did you really gain? 1 char? !
+
+      try (var writer = new BufferedWriter(new FileWriter("file.txt"))) {
+         writer.write("string");
+      }
+
+
+//      Stream<String> lines = databasequery
+      try (var lines = Files.lines(new File("data.txt").toPath())) {
+         lines.forEach(System.out::println);
+      }
+
    }
 
 //   var vv = 1; // fields don't work with var
