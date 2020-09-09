@@ -20,41 +20,12 @@ public class Vars {
 
    // var for lambda args, for annotations; all or none
 
-
-//   public static final  Map<Integer,List<String>> oldMap = new HashMap<>()
-//   {//anonymous HashMap subclass
-//      { // instance initializer block
-//      put(1, asList("one"));
-//      put(2, asList("two"));
-//      }
-//   };
-
-   public static final  Map<Integer,List<String>> map = Map.ofEntries(
-       entry(1, List.of("one","unu")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two")),
-       entry(2, List.of("two"))
-//       ,2, List.of("two")// 11th illegal
-   );
-
-//   public static final Set<String> keys = new HashSet<>(asList("a","b","c"));
-   public static final Set<String> keys = Set.of("a","b","c");
+   public static final  Map<Integer,List<String>> map =
+       Map.of(
+       1, List.of("one","unu"),
+       2, List.of("two"));
 
    public static void main(String[] args) {
-
-//      map.put(3, asList("trei")); // throws: Map.of creates unmodifiable maps
-
 
       for (var entry : map.entrySet()) {
          System.out.println(entry.getKey());
