@@ -1,9 +1,7 @@
 package victor.training.java14;
 
-import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -79,11 +77,11 @@ record Interval<T extends Comparable<T>>(T start, T end) implements Comparable<I
 // OK generics
 // OK inner classes -- possible, but don't
 // NO adding extra fields vs the constructor
-
-
-// anonymous records
-// constructorS  - overloaded constructors + logic in the constructor (eg validation)
+// anonymous records NO
 // framework integration (mybatis, jackson HARD manually, Hibernate NO, JAXB NO)
+
+
+// constructorS  - overloaded constructors + logic in the constructor (eg validation)
 
 
 // Vreti o discutie despre imutabilitate?
@@ -95,14 +93,22 @@ interface Shape {
    }
 }
 record Circle(double radius) implements Shape {
-   class CirclesBaby {
-
+   public Circle(String radiusStr) { // overloaded constructor needs to call another constructor.
+      this(Double.parseDouble(radiusStr));
    }
-   static class CirclesBaby2 {
-
+   public Circle(String radiusStr, String second) { // overloaded constructor needs to call another constructor.
+      this(radiusStr+second);
    }
-   record R1(int x) {}
-   static record R2(int x) {}
+}
+class CircleClass {
+   private final double radius;
+
+   CircleClass(double radius) {
+      this.radius = radius;
+   }
+   CircleClass(String radius) {
+      this.radius = Double.parseDouble(radius);
+   }
 }
 
 record WebServiceConfig(List<EndpointConfig> endpoints) {
