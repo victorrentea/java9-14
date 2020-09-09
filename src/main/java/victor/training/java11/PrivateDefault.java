@@ -12,8 +12,17 @@ public class PrivateDefault {
 interface ICommChanel {
    void sendMessage(String message);
    default void sendAlert(String message) {
-      String alert = message.toUpperCase() + "!";
+      String alert = inUpper(message);
       sendMessage(alert);
+   }
+
+   default void sendTerribleAlert(String message) {
+      String alert = "WARNING: " + message.toUpperCase() + "!";
+      sendMessage(alert);
+   }
+
+   private String inUpper(String message) {
+      return message.toUpperCase() + "!";
    }
 }
 
