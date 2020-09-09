@@ -13,3 +13,17 @@ public class Records {
       return start1 <= end2 && start2 <= end1;
    }
 }
+
+
+// + SHADOW exceptions!!!
+
+// extends // abstract records
+// comparable (implementing stuff)
+// framework integration (mybatis, jackson)
+// add more methods
+// change the generated methods ?
+// setters ?
+// more than 1 param
+// inner classes
+// anonymous records
+// constructorS  - overloaded constructors + logic in the constructor (eg validation)
