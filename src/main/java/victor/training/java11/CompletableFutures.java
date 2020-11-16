@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import victor.training.stuff.CPUTask;
 
+import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static victor.training.stuff.ConcurrencyUtil.*;
@@ -17,15 +19,20 @@ public class CompletableFutures implements Runnable {
 
       new Thread(new CompletableFutures()).start();
 
+      new Scanner(System.in).nextLine();
       ForkJoinPool exec2 = new ForkJoinPool(8);
       for (int i = 0; i < 10; i++) {
          CompletableFuture.supplyAsync(() -> getData())
              .thenApplyAsync(s -> {
-                log.debug("Wait a bit, block everyone..");
-                sleepQuiet(8000);
+                    log.debug("Wait a bit, block everyone..");
+                    return s;
+                 })
+             .thenApplyAsync( s-> {
+//                sleepQuiet(8000);
                 log.debug("Resume...");
                 return s;
-             },exec2).thenAccept(log::debug);
+             },CompletableFuture.delayedExecutor(8, TimeUnit.SECONDS))
+             .thenAccept(log::debug);
 
       }
       IntStream.range(1,40).parallel().peek(i -> {
@@ -33,7 +40,7 @@ public class CompletableFutures implements Runnable {
          sleepQuiet(100);
       }).forEach(System.out::println);
 
-      Thread.sleep(6000);
+      Thread.sleep(10000);
    }
 
    private static String getData() {
