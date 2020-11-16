@@ -17,22 +17,19 @@ public class PrivateDefault {
 
 interface ICommChanel {
    void sendMessage(String message);
-   void sendAlert(String alert);
-}
-
-abstract class AbstractChannel implements ICommChanel {
-   public void sendAlert(String alert) {
+   default void sendAlert(String alert) {
        sendMessage(alert.toUpperCase() + "!");
    }
 }
 
-class SmsChannel extends AbstractChannel implements ICommChanel {
+
+class SmsChannel implements ICommChanel {
    @Override
    public void sendMessage(String message) {
 
    }
 }
-class EmailChannel extends AbstractChannel implements ICommChanel {
+class EmailChannel implements ICommChanel {
    @Override
    public void sendMessage(String message) {
 
