@@ -3,7 +3,7 @@ package victor.training.java14;
 // -XX:+ShowCodeDetailsInExceptionMessages
 public class NPE {
    public static void main(String[] args) {
-      output(new A(new B(new C("Halo"))));
+      output(new A(new B(new C(null))));
 
       //but it still doesn't solve 'returning death nulls'
       System.out.println(nastyBizFunction(5123).repeat(2));
