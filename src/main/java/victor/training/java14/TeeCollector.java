@@ -12,6 +12,9 @@ public class TeeCollector {
       // Java 12
       List<Integer> collect = IntStream.range(1, 10).boxed().collect(Collectors.toList());
       Long avg = collect.stream().collect(Collectors.teeing(summingInt(i -> i), counting(), (s, c) -> s / c));
+      double asDouble = collect.stream().mapToInt(i -> i).average().getAsDouble();
+//      collect.stream().reduce(0, (acc, e) -> acc + e);
       System.out.println(avg);
    }
 }
+// tee linux : ii dai un input si copiaza pe stdout + file
