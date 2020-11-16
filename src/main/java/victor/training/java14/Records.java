@@ -1,5 +1,7 @@
 package victor.training.java14;
 
+import java.math.BigDecimal;
+
 public class Records {
    public static void main(String[] args) {
       Interval interval1 = new Interval(1, 3);
@@ -9,18 +11,13 @@ public class Records {
 
       System.out.println(interval1.compareTo(new Interval(2,7)));
       System.out.println(new Interval(1, 3).length());
-      // final final final
-      // implements, abstract and extends
-      // 2nd constructor
-      // extra content
-      // override generated methods
-   }
 
+   }
 }
 
 
-record Interval(int start, int end) implements Comparable<Interval> {
 
+record Interval(int start, int end) implements Comparable<Interval> {
    public Interval {
       System.out.println("WHAT?! constructor fara paranteze, O abominatie !");
       // pentru ca campurile deja au fost copiat
@@ -28,12 +25,15 @@ record Interval(int start, int end) implements Comparable<Interval> {
          throw new IllegalArgumentException();
       }
    }
-
    public Interval(String startStr, String endStr) {
       this(Integer.parseInt(startStr), Integer.parseInt(endStr));
    }
    public Interval(String intervalStr) {
       this(met(intervalStr)[0], met(intervalStr)[1]);
+   }
+
+   public Interval translate(int delta) {
+      return new Interval(start + delta, end + delta);
    }
 
    public static String[] met(String intervalStr) {
