@@ -8,6 +8,7 @@ public class PrivateDefault {
    public static void main(String[] args) {
       //
       List<String> list = new ArrayList<>();
+
       ICommChanel smsChannel = new SmsChannel();
       smsChannel.sendAlert("Clientul o vrea");
 
