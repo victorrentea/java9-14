@@ -20,7 +20,7 @@ public class TeeCollector {
 //      collect.stream().reduce(0, (acc, e) -> acc + e);
       System.out.println(avg);
 
-      Supplier<Integer> i = getIncrementer();
+      Supplier<Integer> i = getIncrementer(2);
       System.out.println(i.get());
       System.out.println(i.get());
       System.out.println(i.get());
@@ -28,9 +28,9 @@ public class TeeCollector {
       System.out.println(i.get());
    }
 
-   public static Supplier<Integer> getIncrementer() {
-       int i = 0;
-       return () -> i++;
+   public static Supplier<Integer> getIncrementer(int a) {
+       int i = a + 1;
+       return () -> i; // lambda-ul creat are valoarea a+1 hardcodata.
    }
 
 
