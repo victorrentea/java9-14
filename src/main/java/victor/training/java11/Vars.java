@@ -2,12 +2,19 @@ package victor.training.java11;
 
 
 
+import lombok.NonNull;
+
+import java.io.File;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
@@ -25,6 +32,25 @@ public class Vars {
 
    //class var {  } // asta nu mai merge din Java 10
    public static void main(String[] args) {
+      var a = List.of("a", 1f, 2);
+
+      Stream<BigDecimal> s =
+//      var bigDecimalStream =
+          IntStream.range(1, 100)
+          .mapToObj(n -> "aa" + n)
+          .map(BigDecimal::new);
+//
+//      v.filter
+//      .map
+//      .map;
+
+//      var v = metodaStraina(); // LIst<Map<Inte,Str>>
+
+//      try (var lines = Files.lines(new File("a.xtxt").toPath())) {
+//         lines.forEach(System.out::println);
+//      }
+
+
       var i = 1; // local variable type inference
 
       var var = 2; // merge pt ca var nu e keyword (ar fi rupt milioane de linii de cod vechi) ci este reserved type
@@ -50,7 +76,9 @@ public class Vars {
       }
 //      HttpResponse<ParameterizedType<List<MyDyo>>> response  = RestTemplate.exchange
 //      var response  = RestTemplate.exchange
+//      response.getBody().stream()
 //      jackson.unmarshall (new ParameterizedReference<List<MyDto>>(){}.class, json);
+
 
       // "Target Typing": Incepand cu  java 8, lambda si meth reference pot fi definite
       // doar cand javac stie exact ce tip functional asteapta
@@ -63,11 +91,18 @@ public class Vars {
       var parse = (Function<Integer, Boolean>) Vars::pred; // KO javac
       I f5 = Vars::pred;
       I2 i2 = Vars::daSet; // covarianta in return type
-      I3 i3 = Vars::iaColectie; // antivarianta in param
+      I3 i3 = Vars::iaColectie; // contravarianta in param
 
       Supplier<Set<Integer>> daSet = Vars::daSet;
       Supplier<Collection<Integer>> returnMaiGeneric = Vars::daSet;
+      // toate <> se sterg mai putin din:
+      // meth return type List<>
+      // meth param type List<>
+      // field List<String>
+      // extends X<String>
 
+
+      Predicate<String> ps = (@NonNull var ss) -> ss.toUpperCase().equals(ss);
    }
    interface I {
       boolean handle(Integer integer);
@@ -89,3 +124,15 @@ public class Vars {
    }
 }
 
+
+//class A {
+//   public Collection<String> s(List<Integer> i) {
+//      return null;
+//   }
+//}
+//class B  extends A{
+//   @Override
+//   public Set<String> s(Collection<Integer> any) {
+//      return null;
+//   }
+//}
