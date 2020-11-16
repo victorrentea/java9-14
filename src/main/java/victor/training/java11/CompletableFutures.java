@@ -25,7 +25,7 @@ public class CompletableFutures implements Runnable {
                 sleepQuiet(8000);
                 log.debug("Resume...");
                 return s;
-             }).thenAccept(log::debug);
+             },exec2).thenAccept(log::debug);
 
       }
       IntStream.range(1,40).parallel().peek(i -> {
