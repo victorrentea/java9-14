@@ -2,6 +2,8 @@ package victor.training.java11;
 
 
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -19,7 +21,11 @@ public class Vars {
    // var for lambda args, for annotations; all or none
 
    public static void main(String[] args) {
-      var map = Map.of(1, List.of("one"), 2, List.of("two"));
+      // TODO Map.of(), .ofEntries()
+      Map<Integer, List<String>> map = new HashMap<>();
+      map.put(1, Arrays.asList("one"));
+      map.put(2, Arrays.asList("one", "two"));
+
       for (Entry<Integer, List<String>> entry : map.entrySet()) {
          System.out.println(entry.getKey());
       }
