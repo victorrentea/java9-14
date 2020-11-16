@@ -3,7 +3,8 @@ package victor.training.java14;
 public class Records {
    public static void main(String[] args) {
       Interval interval1 = new Interval(1, 3);
-      new Interval(3, 1);
+//      new Interval(3, 1);
+      new Interval("1-3");
       System.out.println(interval1.intersects(new Interval(2, 4)));
 
       System.out.println(interval1.compareTo(new Interval(2,7)));
@@ -20,17 +21,23 @@ public class Records {
 
 record Interval(int start, int end) implements Comparable<Interval> {
 
-   // subanteles
-//   public Interval(int start, int end) {
-//      this.start = start;
-//      this.end=end;
-//   }
    public Interval {
       System.out.println("WHAT?! constructor fara paranteze, O abominatie !");
       // pentru ca campurile deja au fost copiat
       if (start > end) {
          throw new IllegalArgumentException();
       }
+   }
+
+   public Interval(String startStr, String endStr) {
+      this(Integer.parseInt(startStr), Integer.parseInt(endStr));
+   }
+   public Interval(String intervalStr) {
+      this(met(intervalStr)[0], met(intervalStr)[1]);
+   }
+
+   public static String[] met(String intervalStr) {
+      return intervalStr.split("-");
    }
 
    public boolean intersects(Interval interval2) {
