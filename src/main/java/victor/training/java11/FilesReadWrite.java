@@ -9,6 +9,7 @@ public class FilesReadWrite {
    public static void main(String[] args) throws IOException {
 
       Files.writeString(Paths.get("test.txt"), "What\nduh");
+//      IOUtils.writeString()
    }
 }
 
