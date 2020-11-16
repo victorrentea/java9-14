@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import victor.training.stuff.CPUTask;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
 import static victor.training.stuff.ConcurrencyUtil.*;
@@ -16,6 +17,7 @@ public class CompletableFutures implements Runnable {
 
       new Thread(new CompletableFutures()).start();
 
+      ForkJoinPool exec2 = new ForkJoinPool(8);
       for (int i = 0; i < 10; i++) {
          CompletableFuture.supplyAsync(() -> getData())
              .thenApplyAsync(s -> {
@@ -26,7 +28,12 @@ public class CompletableFutures implements Runnable {
              }).thenAccept(log::debug);
 
       }
-//      Thread.sleep(6000);
+      IntStream.range(1,40).parallel().peek(i -> {
+         log.debug("Acum rulez " + i);
+         sleepQuiet(100);
+      }).forEach(System.out::println);
+
+      Thread.sleep(6000);
    }
 
    private static String getData() {
