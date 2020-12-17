@@ -25,6 +25,7 @@ public class TryWithResources {
          if (lines.count() > 10000) {
             throw new IllegalArgumentException();
          }
+//         while (true);
       }
    }
 
