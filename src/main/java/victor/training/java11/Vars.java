@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
@@ -58,6 +59,8 @@ public class Vars {
          System.out.println(entry.getKey());
       }
 
+//      StreamSupport.stream(badName.entrySet().spliterator(), false)
+//      badName.entrySet().stream()
       //      File file = new File("a.txt");
 //      try (Stream<List<String>> lineCells = openLineCellStream(file)) {
 //         lineCells.forEach(Vars::handle);
