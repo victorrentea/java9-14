@@ -19,12 +19,34 @@ public class Records {
 
 
 
+      // What should I do with records in production?
+      // 1) record + Hibernate = NO
+      // 2) record + noSQL
+
+      // 3) use them for Hibernate : Projection Queries
+      // SELECT new victor.training.java14.Interval(car.startYear, car.endYear)
+      // FROM CarEntity car .... //
+
+      // 4) runtime data objects (stuff that you write your logic on)
+      // plays nice with Functional style programming (pure functions)
+      // it's a DECLARATIVE plaing sight statement: I wont' change the state of my objects.
+
+      // !! less boilerplate
+      // replacing lombok.@Value everywhere
+
+
+      // 5) NOT for Jackson yet. It will be there.
+      // you will need to use annotations. they appear to support it already https://github.com/FasterXML/jackson-future-ideas/issues/46
+
+      // Immutable object are painful (cumbersome and maybe GC unfriendly) to work with :eg> interval.moveRight
+
+      // it doesn't pay off to use records at the DTO level.
 
 
       System.out.println(new Interval(1,3).equals(new Interval(1,3)));
       Interval intv = new Interval(1, 3);
       System.out.println(intv);
-      intv.moveLeft(1);
+      intv = intv.moveLeft(1);
 
 
       System.out.println(new Interval(1, 3).intersects(new Interval(2, 4)));

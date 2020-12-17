@@ -1,8 +1,12 @@
 package victor.training.java14;
 
 
+interface  IRec{
+   boolean intersects(Interval other);
+}
+
 //@Builder
-public record Interval(int start, int end) {
+public record Interval(int start, int end) implements IRec {
 //   int x; // mutable
 
    public Interval { // where the hack is the argument list?
@@ -25,6 +29,11 @@ public record Interval(int start, int end) {
       return new Interval(start - delta, end - delta);
    }
 
+   @Override
+   public int start() {
+      return start;
+   }
+
    public static class IntervalBuilder {
       private int start, end;
 
@@ -41,3 +50,4 @@ public record Interval(int start, int end) {
       }
    }
 }
+
