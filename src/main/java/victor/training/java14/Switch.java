@@ -37,6 +37,11 @@ public class Switch {
 //         default -> throw new IllegalStateException("HOPE; Unexpected value: " + isoCode);
        };
    }
+//   interface TaxComputation {
+//   }
+
+//   class BulgariaTaxComputation implements TaxComputation {
+//   }
 
    private static double computeMoldavianTaxes(double value) {
       return 7 + .02 * value;
