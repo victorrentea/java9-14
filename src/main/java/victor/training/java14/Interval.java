@@ -1,21 +1,13 @@
 package victor.training.java14;
 
+
+import lombok.Data;
+import lombok.Value;
+
+@Value
 public class Interval {
-   private final int start;
-   private final int end;
-
-   public Interval(int start, int end) {
-      this.start = start;
-      this.end = end;
-   }
-
-   public int getStart() {
-      return start;
-   }
-
-   public int getEnd() {
-      return end;
-   }
+   int start;
+   int end;
 
 
    public boolean intersects(Interval other) {
