@@ -11,6 +11,7 @@ public class Optionals {
       Optional<String> opt = Math.random() < 0.5 ? of("a") : empty();
 
       String s = opt.orElseGet(() -> expensiveBackup());
+//opt.is
 
       System.out.println("Result = " + s);
    }

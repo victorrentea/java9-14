@@ -5,7 +5,9 @@ import java.util.stream.Stream;
 
 public class StreamsTake {
    public static void main(String[] args) {
-      List.of("","","Row1","Row2","Row3","","Row5");
+      List<String> list = List.of("", "", "Row1", "Row2", "Row3", "", "Row5");
+
+//      list.stream().dro
       // dropWhile
    }
 }
