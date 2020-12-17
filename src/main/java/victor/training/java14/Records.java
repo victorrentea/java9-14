@@ -7,9 +7,13 @@ public class Records {
       // 2nd constructor
       // extra content
       // override generated methods
+
+//      new Interval(4, 3);
+      System.out.println(new Interval(1, 3).intersects(new Interval(2, 4)));
+      System.out.println(new Interval(10, 30).intersects(new Interval(20, 40)));
    }
 
-   public static boolean intervalsIntersect(int start1, int end1, int start2, int end2) {
-      return start1 <= end2 && start2 <= end1;
-   }
 }
+
+
+
