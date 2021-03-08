@@ -3,19 +3,19 @@ package victor.training.java14;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+enum CountryCode {
+   BG, MD, US, MX
+//      ,
+//      RO
+}
 public class Switch {
    private static final Logger log = LoggerFactory.getLogger(Switch.class);
+
    public static void main(String[] args) {
       System.out.println("VAT BG = " + getVAT(CountryCode.BG, 10, true));
       System.out.println("VAT BD = " + getVAT(CountryCode.MD, 20, false));
 
       auditMessage("CreateOrder");
-   }
-
-   enum CountryCode {
-      BG, MD, US, MX
-//      ,
-//      RO
    }
 
    private static double getVAT(CountryCode isoCode, double value, boolean tobacco) {
