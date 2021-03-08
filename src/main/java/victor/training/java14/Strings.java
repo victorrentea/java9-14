@@ -1,11 +1,29 @@
 package victor.training.java14;
 
 public class Strings {
+//
    public static void main(String[] args) {
-      String jude = "Hey Jude, don't make it bad\n" +
-                    "Take a sad song and make it better\n" +
-                    "Remember to let her into your heart\n" +
-                    "Then you can start to make it better";
+      String jude = """
+          Hey Jude, don't make it bad
+            Take a sad song and make it better
+          Remember to let her into your heart
+            Then you can start to make it better""";
+      String json = """
+          {
+            "field1": 12,
+            "field2": "text",
+            "s": 23,\
+          
+          }""";
+
+
+//      String sql = """
+//       SELECT *
+//       FROM INFORMATION_SCHEMA
+//       WHERE
+//       """
+      System.out.println(jude);
+
 
       // .isBlank 11
       // .indent
