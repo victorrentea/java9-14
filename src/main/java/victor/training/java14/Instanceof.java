@@ -6,8 +6,7 @@ public class Instanceof {
       m(false);
    }
    public static void m(Object o) {
-      if (o instanceof String) {
-         String s = (String) o;
+      if (o instanceof String s) {
          System.out.println("Someone said '" + s + "'");
       }
    }
