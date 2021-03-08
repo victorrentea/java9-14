@@ -1,4 +1,4 @@
-package victor.training.java14;
+package victor.training.java17;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +39,4 @@ public class Switch {
             break;
       }
    }
-}
-
-enum En {
-   A,B,C
 }

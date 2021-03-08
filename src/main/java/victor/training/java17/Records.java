@@ -1,12 +1,13 @@
-package victor.training.java14;
+package victor.training.java17;
 
 public class Records {
    public static void main(String[] args) {
-      // final final final
-      // implements, abstract and extends
-      // 2nd constructor
+      // immutable
+      // extends
       // extra content
       // override generated methods
+      // implements
+      // constructor overload
    }
 
    public static boolean intervalsIntersect(int start1, int end1, int start2, int end2) {

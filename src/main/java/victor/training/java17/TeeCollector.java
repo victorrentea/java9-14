@@ -1,4 +1,4 @@
-package victor.training.java14;
+package victor.training.java17;
 
 import java.util.List;
 import java.util.stream.Collectors;

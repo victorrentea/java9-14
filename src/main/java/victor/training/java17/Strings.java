@@ -1,4 +1,4 @@
-package victor.training.java14;
+package victor.training.java17;
 
 public class Strings {
    public static void main(String[] args) {
@@ -7,18 +7,22 @@ public class Strings {
                     "Remember to let her into your heart\n" +
                     "Then you can start to make it better";
 
-      // .isBlank 11
-      // .indent
-      // .lines 11
-      // .repeat - do the same as .indent 11
-      // .strip+ 11
+      String select = "SELECT * " +
+                      "FROM USERS " +
+                      "WHERE username = ?";
 
+      String json = "{\"name\" : \"John Doe\"," +
+                    "  \"age\": 1}";
 
       // text blocks
-      // stripIndent
+
       // .formatted
-      // \
-      // <trailingspace>\s
+
+      // .lines 11
+
+      // .isBlank 11
+      // .repeat 11
+      // .strip+ 11
 
    }
 }
